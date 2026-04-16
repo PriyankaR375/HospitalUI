@@ -2,231 +2,244 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<title>EliteCare Medical Center</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hospital UI</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Segoe UI', sans-serif;
-    }
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
 
-    body {
-        background: #f4f9ff;
-        color: #333;
-    }
+body{
+    background: url('https://www.transparenttextures.com/patterns/crosses.png'),
+                linear-gradient(135deg,#e8f5e9,#c8e6c9);
+}
 
-    /* Navbar */
-    header {
-        background: #0a66c2;
-        padding: 15px 40px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        color: white;
-    }
+/* HEADER */
+.header{text-align:center;padding:40px 20px;}
+.quote{font-size:28px;font-style:italic;color:#2e7d32;}
+.header h1{font-size:60px;color:#1b5e20;margin-top:15px;}
+.header p{color:#2e7d32;}
 
-    header h1 {
-        font-size: 24px;
-    }
+/* TOP RIGHT */
+.top-right{position:absolute;top:20px;right:20px;text-align:right;}
+.logo{font-size:30px;}
 
-    nav a {
-        color: white;
-        text-decoration: none;
-        margin-left: 20px;
-        font-weight: 500;
-    }
+/* BOXES */
+.box-row{display:flex;justify-content:center;gap:30px;margin-top:30px;}
+.box{
+    width:300px;padding:25px;background:white;border-radius:15px;
+    font-size:18px;text-align:center;cursor:pointer;transition:0.3s;
+}
+.box:hover{transform:scale(1.05);}
 
-    nav a:hover {
-        text-decoration: underline;
-    }
+/* POPUPS */
+.popup{
+    display:none;margin:20px auto;width:60%;background:white;
+    padding:20px;border-radius:15px;animation:fade 0.5s;
+}
 
-    /* Hero Section */
-    .hero {
-        height: 80vh;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 40px;
-        background: linear-gradient(to right, #0a66c2, #6dd5fa);
-        color: white;
-    }
+/* BOOK */
+.book-box{
+    margin:30px auto;width:350px;padding:25px;background:white;
+    border-radius:15px;text-align:center;font-size:20px;cursor:pointer;
+}
 
-    .hero-text {
-        max-width: 50%;
-    }
+/* FORM */
+.form{
+    display:none;margin:20px auto;width:350px;background:white;
+    padding:20px;border-radius:15px;
+}
+.form input,.form select{width:100%;padding:10px;margin:8px 0;}
 
-    .hero h2 {
-        font-size: 40px;
-        margin-bottom: 15px;
-    }
+button{
+    padding:10px;background:#2e7d32;color:white;
+    border:none;border-radius:8px;width:100%;cursor:pointer;
+}
 
-    .hero p {
-        font-size: 18px;
-        margin-bottom: 20px;
-    }
+/* DOCTORS */
+.doctor-card{
+    background:#e8f5e9;
+    padding:10px;
+    margin:5px 0;
+    border-radius:10px;
+    animation:fade 0.5s;
+}
 
-    .btn {
-        background: white;
-        color: #0a66c2;
-        padding: 12px 20px;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        font-weight: bold;
-    }
+/* RESULT */
+.result{margin-top:10px;color:#1b5e20;font-weight:bold;}
 
-    .btn:hover {
-        background: #e6f0ff;
-    }
+/* EMERGENCY */
+.emergency{
+    position:fixed;bottom:15px;right:15px;
+    background:#c62828;color:white;padding:12px;border-radius:10px;
+}
 
-    .hero img {
-        width: 400px;
-        border-radius: 20px;
-    }
-
-    /* Services */
-    .services {
-        padding: 50px 40px;
-        text-align: center;
-    }
-
-    .services h2 {
-        margin-bottom: 30px;
-    }
-
-    .service-box {
-        display: flex;
-        justify-content: space-around;
-        flex-wrap: wrap;
-    }
-
-    .card {
-        background: white;
-        width: 250px;
-        margin: 15px;
-        padding: 20px;
-        border-radius: 15px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        transition: 0.3s;
-    }
-
-    .card:hover {
-        transform: translateY(-10px);
-    }
-
-    .card h3 {
-        margin-bottom: 10px;
-    }
-
-    /* Doctors */
-    .doctors {
-        padding: 50px 40px;
-        background: #eef6ff;
-        text-align: center;
-    }
-
-    .doctor-container {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-
-    .doctor-card {
-        background: white;
-        margin: 15px;
-        padding: 20px;
-        width: 220px;
-        border-radius: 15px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-
-    .doctor-card img {
-        width: 100%;
-        border-radius: 10px;
-    }
-
-    /* Footer */
-    footer {
-        background: #0a66c2;
-        color: white;
-        text-align: center;
-        padding: 15px;
-    }
-
+/* ANIMATION */
+@keyframes fade{from{opacity:0;} to{opacity:1;}}
 </style>
 </head>
 
 <body>
 
-<!-- Navbar -->
-<header>
-    <h1>CityCare Hospital</h1>
-    <nav>
-        <a href="#">Home</a>
-        <a href="#">Services</a>
-        <a href="#">Doctors</a>
-        <a href="#">Contact</a>
-    </nav>
-</header>
+<!-- TOP RIGHT -->
+<div class="top-right">
+<div class="logo">🏥</div>
+<p>Morning: 8AM - 1PM</p>
+<p>Evening: 4PM - 9PM</p>
+<p>24/7 Emergency</p>
+</div>
 
-<!-- Hero Section -->
-<section class="hero">
-    <div class="hero-text">
-        <h2>Your Health, Our Priority</h2>
-        <p>Providing the best healthcare services with advanced technology and expert doctors.</p>
-        <button class="btn">Book Appointment</button>
-    </div>
-    <img src="https://cdn.pixabay.com/photo/2017/06/20/19/22/hospital-2425121_1280.jpg" alt="Hospital">
-</section>
+<!-- HEADER -->
+<div class="header">
+<div class="quote">"Caring for Life, Every Moment Matters"</div>
+<h1>EliteCare Medical Center</h1>
+<p>Bangalore, India | 🟢 Open 24/7</p>
+</div>
 
-<!-- Services -->
-<section class="services">
-    <h2>Our Services</h2>
-    <div class="service-box">
-        <div class="card">
-            <h3>Emergency Care</h3>
-            <p>24/7 emergency services with quick response.</p>
-        </div>
-        <div class="card">
-            <h3>Diagnostics</h3>
-            <p>Advanced lab and imaging facilities.</p>
-        </div>
-        <div class="card">
-            <h3>Pharmacy</h3>
-            <p>In-house pharmacy for easy access to medicines.</p>
-        </div>
-    </div>
-</section>
+<!-- BOXES -->
+<div class="box-row">
+<div class="box" onclick="toggle('dept')">Departments</div>
+<div class="box" onclick="toggle('diag')">Diagnostic & Support</div>
+</div>
 
-<!-- Doctors -->
-<section class="doctors">
-    <h2>Our Doctors</h2>
-    <div class="doctor-container">
+<!-- POPUPS -->
+<div id="dept" class="popup">
+<ul>
+<li>General Medicine</li>
+<li>General Surgery</li>
+<li>Obstetrics & Gynecology</li>
+<li>Pediatrics</li>
+<li>Orthopedics</li>
+<li>Cardiology</li>
+<li>Neurology</li>
+<li>Dermatology</li>
+<li>ENT</li>
+<li>Ophthalmology</li>
+<li>Psychiatry</li>
+<li>Oncology</li>
+</ul>
+</div>
+
+<div id="diag" class="popup">
+<ul>
+<li>Radiology</li>
+<li>Pathology / Laboratory</li>
+<li>ICU (24/7)</li>
+<li>Physiotherapy <span style="float:right;">₹300</span></li>
+<li>Blood Bank (A+, B+, O+, AB+, O-)</li>
+</ul>
+</div>
+
+<!-- BOOK -->
+<div class="book-box" onclick="showForm()">Book Appointment</div>
+
+<!-- FORM -->
+<div class="form" id="form">
+<input id="name" placeholder="👤 Name">
+<input id="age" placeholder="🎂 Age">
+
+<select id="deptSel" onchange="loadDoctors()">
+<option>Select Department</option>
+<option>General Medicine</option>
+<option>General Surgery</option>
+<option>Obstetrics & Gynecology</option>
+<option>Pediatrics</option>
+<option>Orthopedics</option>
+<option>Cardiology</option>
+<option>Neurology</option>
+<option>Dermatology</option>
+<option>ENT</option>
+<option>Ophthalmology</option>
+<option>Psychiatry</option>
+<option>Oncology</option>
+</select>
+
+<input type="date" id="date">
+
+<div id="doctorList"></div>
+
+<button onclick="book()">Submit</button>
+
+<div class="result" id="result"></div>
+</div>
+
+<!-- EMERGENCY -->
+<div class="emergency">
+🚑 Emergency (24/7)<br>
+108 | +91 9876543210
+</div>
+
+<script>
+
+// TOGGLE
+function toggle(id){
+    let el=document.getElementById(id);
+    el.style.display = el.style.display==="block"?"none":"block";
+}
+
+// FORM
+function showForm(){
+    form.style.display="block";
+}
+
+// DOCTOR DATA
+const doctors = {
+"Cardiology":[{name:"Dr Sharma",exp:"10 yrs",spec:"Heart Specialist"}],
+"Neurology":[{name:"Dr Mehta",exp:"8 yrs",spec:"Brain Specialist"}],
+"Orthopedics":[{name:"Dr Rao",exp:"12 yrs",spec:"Bone Specialist"}],
+"Pediatrics":[{name:"Dr Priya",exp:"7 yrs",spec:"Child Care"}],
+"General Medicine":[{name:"Dr Kumar",exp:"15 yrs",spec:"General Physician"}],
+"General Surgery":[{name:"Dr Singh",exp:"14 yrs",spec:"Surgeon"}],
+"Dermatology":[{name:"Dr Neha",exp:"6 yrs",spec:"Skin Specialist"}],
+"ENT":[{name:"Dr Arjun",exp:"9 yrs",spec:"ENT Specialist"}],
+"Ophthalmology":[{name:"Dr Riya",exp:"8 yrs",spec:"Eye Specialist"}],
+"Psychiatry":[{name:"Dr Aman",exp:"11 yrs",spec:"Mental Health"}],
+"Oncology":[{name:"Dr Roy",exp:"13 yrs",spec:"Cancer Specialist"}],
+"Obstetrics & Gynecology":[{name:"Dr Anjali",exp:"10 yrs",spec:"Women Health"}]
+};
+
+// LOAD DOCTORS
+function loadDoctors(){
+    let dept = deptSel.value;
+    let list = document.getElementById("doctorList");
+    list.innerHTML="";
+
+    doctors[dept]?.forEach(d=>{
+        list.innerHTML += `
         <div class="doctor-card">
-            <img src="https://cdn.pixabay.com/photo/2016/03/31/19/56/doctor-1294823_1280.png">
-            <h3>Dr. Sharma</h3>
-            <p>Cardiologist</p>
-        </div>
-        <div class="doctor-card">
-            <img src="https://cdn.pixabay.com/photo/2017/01/31/13/14/doctor-2027768_1280.png">
-            <h3>Dr. Mehta</h3>
-            <p>Neurologist</p>
-        </div>
-        <div class="doctor-card">
-            <img src="https://cdn.pixabay.com/photo/2020/07/01/12/58/doctor-5357263_1280.png">
-            <h3>Dr. Patel</h3>
-            <p>Pediatrician</p>
-        </div>
-    </div>
-</section>
+        👨‍⚕️ ${d.name}<br>
+        📅 Experience: ${d.exp}<br>
+        🩺 ${d.spec}
+        </div>`;
+    });
+}
 
-<!-- Footer -->
-<footer>
-    <p>© 2026 CityCare Hospital | All Rights Reserved</p>
-</footer>
+// BOOK + DOWNLOAD
+function book(){
+    let token=Math.floor(Math.random()*100);
+    let time=Math.floor(Math.random()*30)+10;
+
+    let text = `
+EliteCare Medical Center
+Name: ${name.value}
+Age: ${age.value}
+Department: ${deptSel.value}
+Date: ${date.value}
+Token: ${token}
+Wait Time: ${time} mins
+`;
+
+    result.innerHTML = `Token: ${token} | Wait: ${time} mins`;
+
+    let blob = new Blob([text], {type:"text/plain"});
+    let link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "appointment.txt";
+    link.click();
+}
+
+</script>
 
 </body>
 </html>
